@@ -25,13 +25,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Execute
+    - name: Set up git config and update versions in helm chart files
       run: |
         echo "::set-env name=BRAND_IMAGE_URL::https://www.microspot.ch/images/logos/Microspot_logo.png"
         echo "::set-env name=COLOR::49C6e5"
         echo "::set-env name=NOW::$(date +'%d.%m.%Y %H:%M:%S')"
-
-        printenv
 
         curl --request POST \
         --url ${{ inputs.webhook }} \
