@@ -36,5 +36,5 @@ runs:
         curl --request POST \
         --url ${{ inputs.webhook }} \
         --header 'content-type: application/json' \
-        --data '{"@type": "MessageCard", "@context": "https://schema.org/extensions", "summary": "$TEXT", "themeColor": "$COLOR", "title": "$TEXT", "sections": [ { "activityTitle": "${{ inputs.version }}", "activitySubtitle": "$NOW", "activityImage": "$BRAND_IMAGE_URL", "facts": [ { "name": "Service", "value": "${{ inputs.service }}" } ] } ], }'
+        --data '{"@type": "MessageCard", "@context": "https://schema.org/extensions", "summary": "${{ env.TEXT }}", "themeColor": "${{ env.COLOR }}", "title": "${{ env.TEXT }}", "sections": [ { "activityTitle": "${{ inputs.version }}", "activitySubtitle": "${{ env.NOW }}", "activityImage": "${{ env.BRAND_IMAGE_URL }}", "facts": [ { "name": "Service", "value": "${{ inputs.service }}" } ] } ], }'
       shell: bash
