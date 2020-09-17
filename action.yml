@@ -31,9 +31,9 @@ runs:
         echo "::set-env name=COLOR::49C6e5"
         echo "::set-env name=NOW::$(date +'%d.%m.%Y %H:%M:%S')"
 
-        echo ${ BRAND_IMAGE_URL }
-        echo ${ COLOR }
-        echo ${ NOW }
+        echo $BRAND_IMAGE_URL
+        echo $COLOR
+        echo $NOW
 
         curl --request POST \
         --url ${{ inputs.webhook }} \
