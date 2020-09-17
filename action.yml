@@ -27,16 +27,15 @@ runs:
   steps:
     - name: Set up git config and update versions in helm chart files
       run: |
-
-        if ${{ inputs.brand  == 'interdiscount' || inputs.brand  == 'Interdiscount' || inputs.brand  == 'Interdiscount' || inputs.brand  == 'id'  || inputs.brand  == 'ID' || inputs.brand  == 'Id' }} then
+        if ${{ inputs.brand  == 'interdiscount' || inputs.brand  == 'Interdiscount' || inputs.brand  == 'Interdiscount' || inputs.brand  == 'id'  || inputs.brand  == 'ID' || inputs.brand  == 'Id' }}; then
           echo "::set-env name=BRAND_IMAGE_URL::https://media.glassdoor.com/sqll/158689/interdiscount-squarelogo-1472471988427.png"
         else
           echo "::set-env name=BRAND_IMAGE_URL::https://www.microspot.ch/images/logos/Microspot_logo.png"
         fi
 
-        if ${{ inputs.state  == 'Success' || inputs.brand  == 'success' }} then
+        if ${{ inputs.state  == 'Success' || inputs.brand  == 'success' }}; then
           echo "::set-env name=COLOR::00ae6d"
-        else if ${{ inputs.state  == 'Failed' || inputs.brand  == 'failed' }} then
+        else if ${{ inputs.state  == 'Failed' || inputs.brand  == 'failed' }}; then
           echo "::set-env name=COLOR::e20713"
         else
           echo "::set-env name=COLOR::49C6e5"
