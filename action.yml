@@ -25,7 +25,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set up git config and update versions in helm chart files
+    - name: Execute
       run: |
         echo "::set-env name=BRAND_IMAGE_URL::https://www.microspot.ch/images/logos/Microspot_logo.png"
         echo "::set-env name=COLOR::49C6e5"
