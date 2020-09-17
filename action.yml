@@ -27,14 +27,14 @@ runs:
   steps:
     - name: Set up git config and update versions in helm chart files
       run: |
-        echo "::set-env name=BRAND_IMAGE_URL::https://www.microspot.ch/images/logos/Microspot_logo.png"
-        echo "::set-env name=COLOR::49C6e5"
-        echo "::set-env name=NOW::$(date +'%d.%m.%Y %H:%M:%S')"
+        export BRAND_IMAGE_URL="https://www.microspot.ch/images/logos/Microspot_logo.png"
+        export COLOR="49C6e5"
+        export NOW=$(date +'%d.%m.%Y %H:%M:%S')
 
-        echo yeah
+        echo yeah2
 
         curl --request POST \
         --url ${{ inputs.webhook }} \
         --header 'content-type: application/json' \
-        --data '{"@type": "MessageCard", "@context": "https://schema.org/extensions", "summary": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "themeColor": "${{ env.COLOR }}", "title": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "sections": [ { "activityTitle": "${{ inputs.version }}", "activitySubtitle": "${{ env.NOW }}", "activityImage": "${{ env.BRAND_IMAGE_URL }}", "facts": [ { "name": "Service", "value": "${{ inputs.service }}" } ] } ], }'
+        --data '{"@type": "MessageCard", "@context": "https://schema.org/extensions", "summary": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "themeColor": "$COLOR", "title": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "sections": [ { "activityTitle": "${{ inputs.version }}", "activitySubtitle": "$NOW", "activityImage": "$BRAND_IMAGE_URL", "facts": [ { "name": "Service", "value": "${{ inputs.service }}" } ] } ], }'
       shell: bash
