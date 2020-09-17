@@ -31,11 +31,11 @@ runs:
         export COLOR="49C6e5"
         export NOW=(date +'%d.%m.%Y %H:%M:%S')
 
-        echo 5
+        echo 6
         echo env vars $COLOR $BRAND_IMAGE_URL $NOW
 
         curl --request POST \
         --url ${{ inputs.webhook }} \
         --header 'content-type: application/json' \
-        --data '{"@type": "MessageCard", "@context": "https://schema.org/extensions", "summary": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "themeColor": "$COLOR", "title": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "sections": [ { "activityTitle": "${{ inputs.version }}", "activitySubtitle": "$NOW", "activityImage": "$BRAND_IMAGE_URL", "facts": [ { "name": "Service", "value": "${{ inputs.service }}" } ] } ], }'
+        --data '{"@type": "MessageCard", "@context": "https://schema.org/extensions", "summary": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "themeColor": "${COLOR}", "title": "${{ inputs.state }}: Deployment to ${{ inputs.brand }} ${{ inputs.stage }}", "sections": [ { "activityTitle": "${{ inputs.version }}", "activitySubtitle": "${NOW}", "activityImage": "${BRAND_IMAGE_URL}", "facts": [ { "name": "Service", "value": "${{ inputs.service }}" } ] } ], }'
       shell: bash
