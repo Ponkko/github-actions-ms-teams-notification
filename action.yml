@@ -27,12 +27,11 @@ runs:
   steps:
     - name: Execute
       run: |
-        echo "::set-env name=BRAND_IMAGE_URL::https://www.microspot.ch/images/logos/Microspot_logo.png"
-        echo "::set-env name=COLOR::49C6e5"
-        echo "::set-env name=NOW::$(date +'%d.%m.%Y %H:%M:%S')"
+        export BRAND_IMAGE_URL="https://www.microspot.ch/images/logos/Microspot_logo.png"
+        export COLOR="49C6e5"
+        export NOW=(date +'%d.%m.%Y %H:%M:%S')
 
-        echo 4
-        echo env vars ${{ env }}
+        echo 5
         echo env vars $COLOR $BRAND_IMAGE_URL $NOW
 
         curl --request POST \
